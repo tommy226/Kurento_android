@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+
+            <LinearLayout
+                android:background="@color/white"
+                android:id="@+id/views_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:orientation="vertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <FrameLayout
+
+                    android:id="@+id/peer_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp">
+                    <FrameLayout
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_gravity="bottom|right"
+                        android:layout_marginBottom="5dp">
+
+                        <org.webrtc.SurfaceViewRenderer
+                            android:id="@+id/remote_gl_surface_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/manager_participant"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/colorAccent"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="3dp"
+                            android:paddingRight="20dp"
+                            android:paddingBottom="3dp" />
+                    </FrameLayout>
+                    <TextView
+                        android:id="@+id/main_participant"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorAccent" />
+
+                    <org.webrtc.SurfaceViewRenderer
+                        android:id="@+id/local_gl_surface_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="visible" />
+
+                    <SurfaceView
+                        android:id="@+id/video_surface"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center" />
+
+                    <RelativeLayout
+                        android:id="@+id/relativeLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_gravity="bottom"
+                        android:background="@color/TRANSPARENT"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                        app:layout_constraintVertical_bias="1.0">
+
+                        <Button
+                            android:id="@+id/start_finish_call"
+                            style="@android:style/Widget.Material.Button.Borderless.Colored"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_margin="5dp"
+                            android:layout_marginStart="30dp"
+                            android:textColor="@color/colorAccent"
+                            android:onClick="buttonPressed"
+                            android:text="@string/start_button" />
+
+                        <Button
+                            android:id="@+id/call_btn"
+                            style="@android:style/Widget.Material.Button.Borderless.Colored"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/start_finish_call"
+                            android:enabled="false"
+                            android:onClick="call"
+                            android:text="Call" />
+
+                        <Button
+                            android:id="@+id/switch_camera_btn"
+                            style="@android:style/Widget.Material.Button.Borderless.Colored"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/call_btn"
+                            android:enabled="false"
+                            android:onClick="switchCamera"
+                            android:text="Camera\nSwitch" />
+
+<!--                        <Button-->
+<!--                            android:id="@+id/rtsp_camera"-->
+<!--                            style="@android:style/Widget.Material.Button.Borderless.Colored"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:layout_toRightOf="@id/switch_camera_btn"-->
+<!--                            android:enabled="true"-->
+<!--                            android:onClick="rtspCall"-->
+<!--                            android:text="RTSP" />-->
+
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="10dp"
+                            android:gravity="end"
+                            android:orientation="vertical"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent">
+
+                            <EditText
+                                android:id="@+id/kurento_url"
+                                style="@android:style/Widget.Material.Button.Borderless.Colored"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="@string/openvidu_url"
+                                android:inputType="text"
+                                android:textColor="@color/white"
+                                android:text="@string/default_kurento_url" />
+
+                            <EditText
+                                android:id="@+id/manager_edit"
+                                style="@android:style/Widget.Material.Button.Borderless.Colored"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="@string/managerName"
+                                android:inputType="text"
+                                android:text="manager5"
+                                android:textColor="@color/white" />
+
+                            <EditText
+                                android:id="@+id/worker_edit"
+                                style="@android:style/Widget.Material.Button.Borderless.Colored"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="@string/workerName"
+                                android:inputType="text"
+                                android:text="sungbins"
+                                android:textColor="@color/white" />
+
+                            <Space
+                                style="@android:style/Widget.Material.Button.Borderless.Colored"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+
+
+
+
+                </FrameLayout>
+            </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

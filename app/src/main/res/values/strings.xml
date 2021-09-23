@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Kurento Android</string>
+    <string name="start_button">Register</string>
+    <string name="openvidu_url">Kurento URL</string>
+    <string name="default_kurento_url">Your url</string>
+    <string name="hang_up">Leave Room</string>
+    <string name="no_connection">COULD NOT ESTABLISH THE CONNECTION, TRY AGAIN </string>
+    <string name="no_permissions_granted">We can not give you service without your permission</string>
+    <string name="permissions_dialog_title">We need your help</string>
+    <string name="accept_permissions_dialog">GIVE PERMISSIONS!</string>
+    <string name="cancel_dialog">CANCEL</string>
+    <string name="no_internet_connection">NO INTERNET CONNECTION, PLEASE CHECK YOUR CONNECTION</string>
+    //
+    <string name="managerName">Manager Name</string>
+    <string name="workerName">Worker Name</string>
+</resources>
